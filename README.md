@@ -1,33 +1,3 @@
-PHP7 Package for OpenWrt
-
-TL;DR: Install from ipk package (ar7xx)
-=======================================
-
-Note: I've tested this package only on Onion Omega.
-If you want to cross compile yourself the package, go to "Compile PHP7 module" 
-
-Install PHP CLI
----------------
-
-```
-root@Omega-xxxx:~# wget http://repo.k3a.it/omega/packages/key.pub && opkg-key add key.pub && rm key.pub
-root@Omega-xxxx:~# echo "src/gz kea_php7 http://repo.k3a.it/omega/packages" >> /etc/opkg/distfeeds.conf
-root@Omega-xxxx:~# opkg update
-root@Omega-xxxx:~# opkg install php7-cli
-root@Omega-xxxx:~# php-cli -v
-PHP 7.0.10 (cli) (built: Aug 27 2016 23:40:50) ( NTS )
-Copyright (c) 1997-2016 The PHP Group
-Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
-```
-
-Install Omega PHP module
-------------------------
-
-```
-root@Omega-xxxx:~# opkg install php7-mod-onion-omega
-root@Omega-xxxx:~# php-cli -m | grep omega
-omega
-```
 
 Compile PHP7 modules
 ====================
@@ -45,3 +15,18 @@ echo "src-git php7 https://github.com/BootLoopLover/openwrt-php7-package.git" >>
 scripts/feeds update -a
 scripts/feeds install -a
 ```
+
+
+#make menuconfig 
+-please tick 
+```
+<*> php7......................................... PHP7 Hypertext preprocessor               
+[*] PHP7 LIBXML support                                                                     
+[*] Use system timezone data instead of php's built-in database                    
+-*- php7-cgi..................... PHP7 Hypertext preprocessor (CGI & FastCGI)                  
+<*> php7-cli............................... PHP7 Hypertext preprocessor (CLI)                   
+<*> php7-fastcgi...................................... FastCGI startup script                    
+<*> php7-mod-curl......................................... cURL shared module                    
+<*> php7-mod-fileinfo................................. Fileinfo shared module
+```       
+ 
