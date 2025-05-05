@@ -18,7 +18,8 @@ scripts/feeds install -a
 
 
 #make menuconfig 
--please tick 
+Language/php/php7
+tick 
 ```
 <*> php7......................................... PHP7 Hypertext preprocessor               
 [*] PHP7 LIBXML support                                                                     
